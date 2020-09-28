@@ -27,14 +27,19 @@ def setup_clip(filename, name):
 	track_id = project.add_track(name=name, type='video')
 	return asset, track_id
 
-def ensure_max_time(start, duration, max_time):
+def ensure_section_time(start, duration, min_time, max_time):
+	if start < min_time:
+		start = min_time
+		duration -= (min_time - start)
+
 	if start + duration >= max_time:
 		print(True, max_time - start)
 		end = max_time - start
 	else:
 		end = duration
 		print(False, duration)
-	return end
+		
+	return start, end
 
 with open("settings.json") as f:
 	config = json.load(f)
@@ -131,6 +136,7 @@ for section in config["sections"]:
 		w = int(cellw * size)
 		h = int(cellh * size)
 		
+		min_time = section_start / song.header.tempo
 		max_time = section_end / song.header.tempo
 		
 		# Get the clip's appearance times from the notes in song
@@ -150,7 +156,7 @@ for section in config["sections"]:
 				
 				
 				duration = outpoint - inpoint
-				end = ensure_max_time(start, duration, max_time)
+				start, end = ensure_section_time(start, duration, min_time, max_time)
 				times.append((start, end))
 				previous_tick = tick
 				
@@ -160,7 +166,7 @@ for section in config["sections"]:
 
 			start = tick / song.header.tempo
 			duration = outpoint - inpoint
-			end = ensure_max_time(start, duration, max_time)
+			start, end = ensure_section_time(start, duration, min_time, max_time)
 			times.append((start, end))
 			tracks[name][1] += 1 # increase current section
 
