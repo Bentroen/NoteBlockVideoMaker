@@ -27,6 +27,14 @@ def setup_clip(filename, name):
 	track_id = project.add_track(name=name, type='video')
 	return asset, track_id
 
+def ensure_max_time(start, duration, max_time):
+	if start + duration >= max_time:
+		print(True, max_time - start)
+		end = max_time - start
+	else:
+		end = duration
+		print(False, duration)
+	return end
 
 with open("settings.json") as f:
 	config = json.load(f)
@@ -59,7 +67,10 @@ for name, clip in config["clips"].items():
 	
 	file = os.path.join("clips", path)
 	asset, track_id = setup_clip(file, name)
-	clips[name] = (instrument, start, attack, end, asset, track_id)a
+	if not end:
+		end = asset.duration
+	print(start, attack, end)
+	clips[name] = (instrument, start, attack, end, asset, track_id)
 	
 
 # Prepare tracks for use in the video
@@ -72,10 +83,10 @@ for name, track in config["tracks"].items():
 	for i, section in enumerate(track["segments"]):
 		print("Loading section {} of track {}".format(i+1, name))
 		start = section.get("start", 0)
-		end = section.get("end", 60)
-		segments.append(clip)
+		end = section.get("end")
+		segments.append((start, end))
 	asset, track_id = setup_clip(file, name)
-	tracks[name] = [instrument, 0, asset, track_id]
+	tracks[name] = [instrument, 0, asset, track_id, segments]
 
 
 # Place clips into final video for each section
@@ -96,18 +107,17 @@ for section in config["sections"]:
 	cellh = HEIGHT / grid_size
 	
 	for item in section["clips"]:
-	
+		
 		# Figure out if a clip or a track
 		name = item["name"]
 		if name in clips:
-			ins, start, attack, end, asset, track_id = clips[name]
+			ins, inpoint, attack, outpoint, asset, track_id = clips[name]
 			type = "clip"
 		elif name in tracks:
-			ins, current_session, asset, track_id = tracks[name]
-			#ins, current_section, segments = tracks[name]
-			#clip = segments[current_section]
+			ins, current_segment, asset, track_id, segments = tracks[name]
+			inpoint, outpoint = segments[current_segment]
 			type = "track"
-			#tracks[name][1] += 1 # increase next segment to be used
+			tracks[name][1] += 1 # increase next segment to be used
 		else:
 			print("Skipping undefined clip: {}".format(name))
 			continue
@@ -135,28 +145,33 @@ for section in config["sections"]:
 				if tick == previous_tick:
 					# skip repeated instruments in the same tick
 					continue
-				time = tick / song.header.tempo - attack
-				#if time + clip.duration >= max_time:
-				#	clip = clip.set_end(max_time - time)
-				max_time = end
-				times.append(time)
+				start = tick / song.header.tempo - attack
+				# prevent clip from exceeding section time
+				
+				
+				duration = outpoint - inpoint
+				end = ensure_max_time(start, duration, max_time)
+				times.append((start, end))
 				previous_tick = tick
 				
 		elif type == "track":
 			note = notes[0]
 			tick = note.tick
 
-			time = tick / song.header.tempo
-			print(tick, time)
-			times.append(time)
+			start = tick / song.header.tempo
+			duration = outpoint - inpoint
+			end = ensure_max_time(start, duration, max_time)
+			times.append((start, end))
 			tracks[name][1] += 1 # increase current section
 
 		
 		# Add clip to the video
-		for time in times:
-			clip = hitfilm.Clip(track_id, asset, time)
+		for start, end in times:
+			print(start)
+			clip = hitfilm.Clip(track_id, asset, start, duration=end)
 			clip.set_position(x, y)
-			clip.set_size(w, h)		
+			clip.set_size(w, h)
+			#clip.subclip(inpoint)
 			
 			project.add_clip(clip)
 			

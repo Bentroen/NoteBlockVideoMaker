@@ -35,8 +35,10 @@ class Clip():
 		self.width = width
 		self.height = height
 	
-	def set_start(self):
-		pass#self.asset_start
+	def subclip(self, start, end=None):
+		self.asset_start = start
+		if end:
+			self.end = start + self.duration
 	
 	def set_length(self):
 		pass
@@ -46,14 +48,16 @@ class Clip():
 		mh = self.asset.height
 		scalex = (self.width * 100) / mw
 		scaley = (self.height * 100) / mh
-		print(mw, mh, self.width, self.height, scalex, scaley)
 		return scalex, scaley
 		
 	def get_time(self):
 		fps = self.asset.fps
-		startframe = int(round(self.start * fps))
-		endframe = int(round((self.start + self.duration) * fps))
+		startframe = round(self.start * fps)
+		endframe = round((self.start + self.duration) * fps)
 		return startframe, endframe
+	
+	def get_asset_start(self):
+		return round(self.asset_start * self.asset.fps)
 	
 	def get_string(self):
 		str = """
@@ -124,7 +128,7 @@ class Clip():
 						</ObjectBase>
 					</VisualObject>
 				</AssetVisualObject>
-			""".format(self.asset.id, self.asset_start, self.id, self.track_id, "Clip", *self.get_time(), self.posx, self.posy, self.anchorx, self.anchory, *self.get_scale(), self.speed)
+			""".format(self.asset.id, self.get_asset_start(), self.id, self.track_id, "Clip", *self.get_time(), self.posx, self.posy, self.anchorx, self.anchory, *self.get_scale(), self.speed)
 		return str
 
 
@@ -252,7 +256,6 @@ class Project():
 		#print(self.video_tracks)
 		self.video_tracks[clip.track_id].add_object(clip)
 		self.media[clip.asset.id].add_instance(clip.id, type=0)
-		print(clip.id)
 		
 		#clip = self.clips[asset_id]
 		#clip.add_instance(instance_id, type)
