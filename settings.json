@@ -1,0 +1,225 @@
+{
+	"clips": {
+		"woodclick": {
+			"source": "drums/woodclick.mp4",
+			"instrument": 20,
+			"start": 0,
+			"attack": 0.190
+		},
+		"cure": {
+			"source": "transitions/cure1.mp4",
+			"instrument": 2,
+			"start": 0
+		},
+		"click": {
+			"source": "drums/click.mp4",
+			"instrument": 21,
+			"start": 0,
+			"attack": 0.385
+		},
+		"crash": {
+			"source": "drums/crash.mp4",
+			"instrument": 16,
+			"start": 0,
+			"attack": 0.316
+		},
+		"shaker": {
+			"source": "drums/shaker.mp4",
+			"instrument": 23,
+			"start": 0,
+			"attack": 0.190
+		},
+		"witch": {
+			"source": "drums/witch.mp4",
+			"instrument": 22,
+			"start": 0,
+			"attack": 0.600
+		},
+		"wither": {
+			"source": "drums/wither.mp4",
+			"instrument": 18,
+			"start": 0,
+			"attack": 0.400
+		},
+		"bassdrum": {
+			"source": "drums/bassdrum.mp4",
+			"instrument": 2,
+			"start": 1.500,
+			"attack": 1.753
+		},
+		"bassdrum_low": {
+			"source": "drums/bassdrum_low.mp4",
+			"instrument": 30,
+			"start": 0.800,
+			"attack": 1.151,
+			"end": 1.800
+		},
+		"bongo1": {
+			"source": "drums/bongo.mp4",
+			"instrument": 28,
+			"start": 2.000,
+			"attack": 2.550,
+			"end": 2.894
+		},
+		"bongo2": {
+			"source": "drums/bongo.mp4",
+			"instrument": 29,
+			"start": 5.304,
+			"attack": 5.304,
+			"end": 6.000
+		},
+		"ride1": {
+			"source": "drums/ride.mp4",
+			"instrument": 18,
+			"start": 2.998,
+			"attack": 3.067,
+			"end": 3.457
+		},
+		"ride2": {
+			"source": "drums/ride.mp4",
+			"instrument": 31,
+			"start": 4.767,
+			"attack": 4.819,
+			"end": 5.184
+		},
+		"ride3": {
+			"source": "drums/ride.mp4",
+			"instrument": 32,
+			"start": 6.580,
+			"attack": 6.617,
+			"end": 7.047
+		},
+		"snare": {
+			"source": "drums/snare.mp4",
+			"instrument": 33,
+			"start": 1.000,
+			"attack": 1.184,
+			"end": 1.600
+		}
+	},
+	"tracks": {
+		"main": {
+			"source": "tracks/Main.mp4",
+			"instrument": 10,
+			"segments": [
+				{ "start": 8.693, "end": 22.383 },
+				{ "start": 31.548, "end": 44.034 },
+				{ "start": 44.054, "end": 56.505 },
+				{ "start": 56.536, "end": 70.259 }
+			]
+		},
+		"flute": {
+			"source": "tracks/Flute Chords.mp4",
+			"instrument": 7,
+			"segments": [
+				{ "start": 13.036, "end": 26.434 },
+				{ "start": 100.435, "end": 125.398 },
+				{ "start": 125.416, "end": 137.870 },
+				{ "start": 137.900, "end": 150.366 },
+				{ "start": 150.400, "end": 162.870 },
+				{ "start": 162.900, "end": 169.766 }
+			]
+		},
+		"chimes": {
+			"source": "tracks/Chimes.mp4",
+			"instrument": 8,
+			"segments": [
+				{ "start": 0.358 }
+			]
+		},
+		"bit": {
+			"source": "tracks/Bit Effects.mp4",
+			"instrument": 13,
+			"segments": [
+				{ "start": 1.566, "end": 14.200 },
+				{ "start": 19.513, "end": 21.533 },
+				{ "start": 39.810, "end": 57.914 },
+				{ "start": 67.925, "end": 76.675 },
+				{ "start": 81.548, "end": 82.685 },
+				{ "start": 125.666, "end": 130.167 },
+				{ "start": 138.099, "end": 142.550 },
+				{ "start": 150.623, "end": 155.000 },
+				{ "start": 163.109, "end": 167.484 },
+				{ "start": 174.610, "end": 182.751 }
+			]
+		},
+		"bass": {
+			"source": "tracks/Bass.mp4",
+			"instrument": 1,
+			"segments": [
+				{ "start": 6.932, "end": 20.351 },
+				{ "start": 50.653, "end": 75.616 },
+				{ "start": 75.651, "end": 89.104 },
+				{ "start": 119.345, "end": 131.798 },
+				{ "start": 131.823, "end": 144.295 },
+				{ "start": 144.321, "end": 156.798 },
+				{ "start": 156.819, "end": 182.334 }
+			]
+		},
+		"pling": {
+			"source": "tracks/Pling Chords.mp4",
+			"instrument": 15,
+			"segments": [
+				{ "start": 0.375, "end": 12.175 },
+				{ "start": 13.186, "end": 26.616 },
+				{ "start": 31.858, "end": 56.892 },
+				{ "start": 56.921, "end": 81.930 },
+				{ "start": 88.072, "end": 95.460 },
+				{ "start": 113.056, "end": 125.630 },
+				{ "start": 125.654, "end": 138.050 },
+				{ "start": 138.067, "end": 150.547 },
+				{ "start": 150.571, "end": 163.049 },
+				{ "start": 163.067, "end": 188.771 }
+			]
+		},
+		"plingfx": {
+			"source": "tracks/Pling Effects.mp4",
+			"instrument": 0,
+			"segments": [
+				{ "start": 12.508, "end": 14.441 },
+				{ "start": 119.235, "end": 125.340 },
+				{ "start": 136.936, "end": 138.048 },
+				{ "start": 139.323, "end": 151.155 },
+				{ "start": 131.751, "end": 163.584 },
+				{ "start": 113.056, "end": 125.630 },
+				{ "start": 125.654, "end": 138.050 },
+				{ "start": 138.067, "end": 150.547 },
+				{ "start": 150.571, "end": 163.049 },
+				{ "start": 163.067, "end": 188.771 }
+			]
+		}
+	},
+	"sections": [
+		{
+			"start": 0,
+			"end": 264,
+			"grid_size": 3,
+			"clips": [
+				{ "name": "pling", "size": 2, "pos": [ 0, 0] },
+				{ "name": "bit", "size": 1, "pos": [2, 2] },
+				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] }
+			]
+		},
+		{
+			"start": 265,
+			"end": 528,
+			"grid_size": 5,
+			"clips": [
+				{ "name": "pling", "size": 3, "pos": [ 0, 0 ] },
+				{ "name": "flute", "size": 2, "pos": [ 0, 3 ] },
+				{ "name": "bass", "size": 2, "pos": [ 3, 0 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "bit", "size": 1, "pos": [ 4, 2 ] },
+				{ "name": "wither", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "witch", "size": 1, "pos": [ 2, 4 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 3, 3 ] },
+				{ "name": "crash", "size": 1, "pos": [ 3, 4 ] },
+				{ "name": "claps", "size": 1, "pos": [ 4, 3 ] },
+				{ "name": "snare", "size": 1, "pos": [ 4, 4 ] }
+			]
+		}
+	]
+}
