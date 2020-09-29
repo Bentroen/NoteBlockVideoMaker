@@ -151,7 +151,7 @@ for section in config["sections"]:
 				if tick == previous_tick:
 					# skip repeated instruments in the same tick
 					continue
-				start = tick / song.header.tempo - attack
+				start = tick / song.header.tempo - (attack - inpoint)
 				# prevent clip from exceeding section time
 				
 				
