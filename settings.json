@@ -20,8 +20,9 @@
 		"crash": {
 			"source": "drums/crash.mp4",
 			"instrument": 16,
-			"start": 0,
-			"attack": 0.316
+			"start": 2.000,
+			"attack": 2.168,
+			"end": 4.200
 		},
 		"shaker": {
 			"source": "drums/shaker.mp4",
@@ -192,16 +193,22 @@
 	"sections": [
 		{
 			"start": 0,
-			"end": 264,
+			"end": 240,
 			"grid_size": 3,
 			"clips": [
 				{ "name": "pling", "size": 2, "pos": [ 0, 0] },
-				{ "name": "bit", "size": 1, "pos": [2, 2] },
+				{ "name": "bit", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 1 ] },
 				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] }
 			]
+		},
+		{
+			"start": 240,
+			"end": 264,
+			"grid_size": 1,
+			"clips": [ ]
 		},
 		{
 			"start": 265,
