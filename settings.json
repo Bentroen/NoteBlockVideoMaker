@@ -11,8 +11,8 @@
 			"instrument": 2,
 			"start": 0
 		},
-		"click": {
-			"source": "drums/click.mp4",
+		"snap": {
+			"source": "drums/snap.mp4",
 			"instrument": 21,
 			"start": 0,
 			"attack": 0.385
@@ -30,8 +30,8 @@
 			"start": 0.000,
 			"attack": 0.633
 		},
-		"shaker": {
-			"source": "drums/shaker.mp4",
+		"rattle": {
+			"source": "drums/rattle.mp4",
 			"instrument": 23,
 			"start": 0,
 			"attack": 0.190
@@ -75,22 +75,22 @@
 			"attack": 5.304,
 			"end": 6.000
 		},
-		"ride1": {
-			"source": "drums/ride.mp4",
+		"shaker1": {
+			"source": "drums/shaker.mp4",
 			"instrument": 32,
 			"start": 4.767,
 			"attack": 4.819,
 			"end": 5.184
 		},
-		"ride2": {
-			"source": "drums/ride.mp4",
+		"shaker2": {
+			"source": "drums/shaker.mp4",
 			"instrument": 31,
 			"start": 2.998,
 			"attack": 3.067,
 			"end": 3.457
 		},
-		"ride3": {
-			"source": "drums/ride.mp4",
+		"shaker3": {
+			"source": "drums/shaker.mp4",
 			"instrument": 33,
 			"start": 6.580,
 			"attack": 6.617,
