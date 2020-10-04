@@ -24,6 +24,12 @@
 			"attack": 2.168,
 			"end": 4.200
 		},
+		"claps": {
+			"source": "drums/claps.mp4",
+			"instrument": 17,
+			"start": 0.000,
+			"attack": 0.633
+		},
 		"shaker": {
 			"source": "drums/shaker.mp4",
 			"instrument": 23,
@@ -96,6 +102,12 @@
 			"start": 1.000,
 			"attack": 1.184,
 			"end": 1.600
+		},
+		"fireworks": {
+			"source": "transitions/fireworks3.mp4",
+			"instrument": 19,
+			"start": 3.700,
+			"attack": 4.049
 		}
 	},
 	"tracks": {
