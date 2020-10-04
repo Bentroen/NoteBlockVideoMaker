@@ -52,7 +52,7 @@
 			"source": "drums/bassdrum.mp4",
 			"instrument": 2,
 			"start": 1.500,
-			"attack": 1.753
+			"attack": 1.805
 		},
 		"bassdrum_low": {
 			"source": "drums/bassdrum_low.mp4",
