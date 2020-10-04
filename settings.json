@@ -85,14 +85,14 @@
 		},
 		"ride3": {
 			"source": "drums/ride.mp4",
-			"instrument": 32,
+			"instrument": 33,
 			"start": 6.580,
 			"attack": 6.617,
 			"end": 7.047
 		},
 		"snare": {
 			"source": "drums/snare.mp4",
-			"instrument": 33,
+			"instrument": 3,
 			"start": 1.000,
 			"attack": 1.184,
 			"end": 1.600
@@ -101,7 +101,7 @@
 	"tracks": {
 		"main": {
 			"source": "tracks/Main.mp4",
-			"instrument": 10,
+			"instrument": 9,
 			"segments": [
 				{ "start": 8.693, "end": 22.383 },
 				{ "start": 31.548, "end": 44.034 },
