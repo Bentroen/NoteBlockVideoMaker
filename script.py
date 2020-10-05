@@ -118,6 +118,9 @@ for section in config["sections"]:
 			type = "clip"
 		elif name in tracks:
 			ins, current_segment, asset, track_id, segments = tracks[name]
+			# loop back to the first segment when running out
+			if current_segment > len(segments) - 1:
+				current_segment = 0
 			inpoint, outpoint = segments[current_segment]
 			type = "track"
 			tracks[name][1] += 1 # increase next segment to be used
