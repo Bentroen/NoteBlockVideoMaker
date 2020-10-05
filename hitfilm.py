@@ -276,7 +276,6 @@ class Project():
 		return track.id
 	
 	def add_clip(self, clip): #, track, asset_id):
-		#print(self.video_tracks)
 		self.video_tracks[clip.track_id].add_object(clip)
 		self.media[clip.asset.id].add_instance(clip.id, type=0)
 		

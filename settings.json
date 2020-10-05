@@ -219,7 +219,7 @@
 			"end": 240,
 			"grid_size": 3,
 			"clips": [
-				{ "name": "pling", "size": 2, "pos": [ 0, 0] },
+				{ "name": "pling", "size": 2, "pos": [ 0, 0 ] },
 				{ "name": "bit", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },

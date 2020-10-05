@@ -33,11 +33,9 @@ def ensure_section_time(start, duration, min_time, max_time):
 		duration -= (min_time - start)
 
 	if start + duration >= max_time:
-		print(True, max_time - start)
 		end = max_time - start
 	else:
 		end = duration
-		print(False, duration)
 		
 	return start, end
 
@@ -74,7 +72,6 @@ for name, clip in config["clips"].items():
 	asset, track_id = setup_clip(file, name)
 	if not end:
 		end = asset.duration
-	print(start, attack, end)
 	clips[name] = (instrument, start, attack, end, asset, track_id)
 	
 
@@ -95,7 +92,6 @@ for name, track in config["tracks"].items():
 
 
 # Place clips into final video for each section
-
 video = []
 last_tick = 0
 
