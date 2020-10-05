@@ -82,12 +82,14 @@ for name, track in config["tracks"].items():
 	file = os.path.join("clips", path)
 	instrument = track["instrument"]
 	segments = []
+	asset, track_id = setup_clip(file, name)
 	for i, section in enumerate(track["segments"]):
 		print("Loading section {} of track {}".format(i+1, name))
 		start = section.get("start", 0)
 		end = section.get("end")
+		if not end:
+			end = asset.duration
 		segments.append((start, end))
-	asset, track_id = setup_clip(file, name)
 	tracks[name] = [instrument, 0, asset, track_id, segments]
 
 
