@@ -185,7 +185,7 @@ for section in config["sections"]:
 			# and only generate a UUID on project.add_clip(), or require a new instance of
 			# Clip everytime a new clip is added.
 
-		print("Rendering instrument {} at tick {}".format(note.instrument, note.tick))
+			print("Rendering {} '{}' at {:.1f} seconds".format(type, name, start))
 
 
 project.save("output.hfp")
