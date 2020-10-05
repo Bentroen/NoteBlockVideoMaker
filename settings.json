@@ -332,7 +332,7 @@
 		{
 			"start": 1680,
 			"end": 1936,
-			"grid_size": 3,
+			"grid_size": 4,
 			"clips": [
 				{ "name": "bass", "size": 2, "pos": [ 0, 0 ] },
 				{ "name": "pling", "size": 2, "pos": [ 2, 2 ] },
@@ -367,12 +367,13 @@
 			"end": 2560,
 			"grid_size": 3,
 			"clips": [
-				{ "name": "pling", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "pling", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "flute", "size": 1, "pos": [ 2, 0 ] },
-				{ "name": "chimes", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "chimes", "size": 1, "pos": [ 1, 1 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 0, 2 ] },
-				{ "name": "claps", "size": 1, "pos": [ 2, 1 ] },
-				{ "name": "plingfx", "size": 1, "pos": [ 1, 2 ] }
+				{ "name": "claps", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 1, 1 ] },
+				{ "name": "CAVE!", "size": 1 }
 			]
 		},
 		{
