@@ -155,15 +155,52 @@ for section in config["sections"]:
 		times = []
 		
 		if type == "clip":
-			last_attack = None
+			last_attack = -1
 			for i, note in enumerate(notes):
 				tick = note.tick
-					
+				
+				'''
 				# find next tick time to figure out how much "margin"
 				try:
 					next_tick = notes[i + 1].tick
 				except IndexError:
 					next_tick = 10000
+				#######attack_delay = attack - inpoint
+				'''
+				
+				
+				
+				
+				# set clip to start exactly at the attack point
+				start = tick / song.header.tempo
+				asset_start = attack
+				duration = outpoint - attack
+				
+				print(last_attack, start)
+				time_from_last_attack = start - last_attack
+				attack_time = attack - inpoint
+
+				# Use 1/4 of the last clip's "release" for the start of
+				# the current clip, the time from the start to the attack
+				# of the clip, or 1/4 of a second (whatever is smaller).
+				advance = min(max(time_from_last_attack / 4, 0), attack_time, 0.25)
+				
+				choices = [max(time_from_last_attack / 4, 0), attack_time, 0.25]
+				print("time from last: {} / attack time: {} / max: {}".format(*choices))
+				print("picking: {}".format(min(choices)))
+				
+				# move clip forward by the calculated start position
+				asset_start -= advance
+				start -= advance
+				duration += advance
+				
+				# prevent clip from exceeding section time
+				#start, asset_start, end = ensure_section_time(start, duration, min_time, max_time)
+				start, end = ensure_section_time(start, duration, min_time, max_time)
+				
+				times.append((start, asset_start, end))
+				last_attack = start + attack_time
+				
 				
 				start = tick / song.header.tempo
 				timeframe = next_tick / song.header.tempo - start
