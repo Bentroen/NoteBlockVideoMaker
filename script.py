@@ -106,6 +106,9 @@ for section in config["sections"]:
 	last_tick = section_end
 	grid_size = section["grid_size"]
 	
+	if section_start > song.header.song_length - 1:
+		break
+	
 	cellw = WIDTH / grid_size
 	cellh = HEIGHT / grid_size
 	
