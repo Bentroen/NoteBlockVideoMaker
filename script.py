@@ -27,7 +27,7 @@ def setup_clip(filename, name):
 	track_id = project.add_track(name=name, type='video')
 	return asset, track_id
 
-def ensure_section_time(start, asset_start, duration, min_time, max_time):
+def enforce_section_time(start, asset_start, duration, min_time, max_time):
 	if start < min_time:
 		start = min_time
 		asset_start += (min_time - start)
@@ -199,7 +199,7 @@ for section in config["sections"]:
 				duration += advance
 				
 				# prevent clip from exceeding section time
-				start, asset_start, end = ensure_section_time(start, asset_start, duration, min_time, max_time)
+				start, asset_start, end = enforce_section_time(start, asset_start, duration, min_time, max_time)
 				
 				times.append((start, asset_start, end))
 				last_attack = start + attack_time
@@ -219,7 +219,7 @@ for section in config["sections"]:
 				
 				# prevent clip from exceeding section time
 				duration = outpoint - asset_start
-				start, end = ensure_section_time(start, duration, min_time, max_time)
+				start, end = enforce_section_time(start, duration, min_time, max_time)
 				
 				
 				# prevent overlapping/wait for attack of previous clip
@@ -251,7 +251,7 @@ for section in config["sections"]:
 			start = tick / song.header.tempo
 			asset_start = inpoint
 			duration = outpoint - inpoint
-			start, asset_start, end = ensure_section_time(start, asset_start, duration, min_time, max_time)
+			start, asset_start, end = enforce_section_time(start, asset_start, duration, min_time, max_time)
 			times.append((start, asset_start, end))
 		
 		# Add clip to the video
