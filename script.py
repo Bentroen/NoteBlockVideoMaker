@@ -155,12 +155,25 @@ for section in config["sections"]:
 		times = []
 		
 		if type == "clip":
-			for note in notes:
 			last_attack = None
+			for i, note in enumerate(notes):
 				tick = note.tick
-				start = tick / song.header.tempo - (attack - inpoint)
-				# prevent clip from exceeding section time
+					
+				# find next tick time to figure out how much "margin"
+				try:
+					next_tick = notes[i + 1].tick
+				except IndexError:
+					next_tick = 10000
 				
+				start = tick / song.header.tempo
+				timeframe = next_tick / song.header.tempo - start
+				advance = min(0.25, timeframe)
+				if advance < 0.25:
+					asset_start = attack
+				else:
+					asset_start = attack - 0.25
+				print(attack, advance, asset_start)
+				start -= advance
 				
 				# ANOTHER APPROACH: set the minimum clip length to be [attack + min(0.25, timeframe)], subtract it from timeframe and split leftover time into head and tail equally 
 				
