@@ -35,10 +35,33 @@ class Clip():
 		self.width = width
 		self.height = height
 	
-	def subclip(self, start, end=None):
+	def set_start(self, start, change_end=True, move_clip=True):
+		# If change_end is True, moves the end as well.
+		# If it is false, keeps the end where it is (changes the length of the clip)
+		# If move_clip is True, the start of the clip stays the same relative to the clip
+		# (acts as moving the clip). If it is false, the start of the clip will change (acts
+		# as dragging its left edge or using the Roll tool)
+		if not change_end:
+			self.duration += (start - self.start)
+		if not move_clip:
+			self.asset_start += (start - self.start)
+		self.start = start
+	
+	def set_end(self, end, change_start=True, move_clip=True):
+		# If change_start is true, moves the start of the clip, preserving the length.
+		# If change_start is false, keeps the start where it is (length of the clip will change)
+		current_end = self.start + self.duration
+		if change_start:
+			self.start += (end - current_end)
+		else:
+			self.duration += (end - current_end)
+		if not move_clip:
+			self.asset_start += (end - current_end)
+		
+	def subclip(self, start, end=None): # alt name: set_in_out
 		self.asset_start = start
 		if end:
-			self.end = start + self.duration
+			self.duration = end
 	
 	def set_length(self):
 		pass
