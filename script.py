@@ -156,33 +156,55 @@ for section in config["sections"]:
 		
 		if type == "clip":
 			for note in notes:
+			last_attack = None
 				tick = note.tick
 				start = tick / song.header.tempo - (attack - inpoint)
 				# prevent clip from exceeding section time
 				
 				
-				duration = outpoint - inpoint
+				# ANOTHER APPROACH: set the minimum clip length to be [attack + min(0.25, timeframe)], subtract it from timeframe and split leftover time into head and tail equally 
+				
+				# prevent clip from exceeding section time
+				duration = outpoint - asset_start
 				start, end = ensure_section_time(start, duration, min_time, max_time)
-				times.append((start, end))
+				
+				
+				# prevent overlapping/wait for attack of previous clip
+				delay = 0
+				print(last_attack, start)
+				#if last_attack and start < last_attack + 0.25:
+				#	delay = start - last_attack + 0.25
+				if last_attack and start < last_attack:
+					delay = last_attack - start
+					print(delay)
+					duration -= delay
+					asset_start += delay
+					start += delay
+				last_attack = start + duration #start + attack_delay
+				
+				times.append((start, asset_start, end))
+				
+				# Center clip around [attack, attack + 0.25] and fit whatever else you can
+				# in the range [start, end] around that.
 				
 		elif type == "track":
 			note = notes[0]
 			tick = note.tick
 
 			start = tick / song.header.tempo
+			asset_start = inpoint
 			duration = outpoint - inpoint
 			start, end = ensure_section_time(start, duration, min_time, max_time)
-			times.append((start, end))
 			tracks[name][1] += 1 # increase current section
 
+			times.append((start, asset_start, end))
 		
 		# Add clip to the video
-		for start, end in times:
-			print(start)
+		for start, asset_start, end in times:
 			clip = hitfilm.Clip(track_id, asset, start, duration=end)
 			clip.set_position(x, y)
 			clip.set_size(w, h)
-			#clip.subclip(inpoint)
+			clip.subclip(asset_start)
 			
 			project.add_clip(clip)
 			
