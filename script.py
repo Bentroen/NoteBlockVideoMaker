@@ -238,7 +238,10 @@ for section in config["sections"]:
 				# in the range [start, end] around that.
 				
 		elif type == "track":
-			note = notes[0]
+			try:
+				note = notes[0]
+			except IndexError as e:
+				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
 			tick = note.tick
 
 			start = tick / song.header.tempo
