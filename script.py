@@ -27,9 +27,10 @@ def setup_clip(filename, name):
 	track_id = project.add_track(name=name, type='video')
 	return asset, track_id
 
-def ensure_section_time(start, duration, min_time, max_time):
+def ensure_section_time(start, asset_start, duration, min_time, max_time):
 	if start < min_time:
 		start = min_time
+		asset_start += (min_time - start)
 		duration -= (min_time - start)
 
 	if start + duration >= max_time:
@@ -37,7 +38,7 @@ def ensure_section_time(start, duration, min_time, max_time):
 	else:
 		end = duration
 		
-	return start, end
+	return start, asset_start, end
 
 with open("settings.json") as f:
 	config = json.load(f)
@@ -198,8 +199,7 @@ for section in config["sections"]:
 				duration += advance
 				
 				# prevent clip from exceeding section time
-				#start, asset_start, end = ensure_section_time(start, duration, min_time, max_time)
-				start, end = ensure_section_time(start, duration, min_time, max_time)
+				start, asset_start, end = ensure_section_time(start, asset_start, duration, min_time, max_time)
 				
 				times.append((start, asset_start, end))
 				last_attack = start + attack_time
@@ -251,7 +251,7 @@ for section in config["sections"]:
 			start = tick / song.header.tempo
 			asset_start = inpoint
 			duration = outpoint - inpoint
-			start, end = ensure_section_time(start, duration, min_time, max_time)
+			start, asset_start, end = ensure_section_time(start, asset_start, duration, min_time, max_time)
 			times.append((start, asset_start, end))
 		
 		# Add clip to the video
