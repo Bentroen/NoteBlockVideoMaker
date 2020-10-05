@@ -304,6 +304,7 @@
 				{ "name": "bass", "size": 2, "pos": [ 2, 2 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "bit", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "witch", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "snap", "size": 1, "pos": [ 0, 3 ] },
 				{ "name": "claps", "size": 1, "pos": [ 1, 3 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
