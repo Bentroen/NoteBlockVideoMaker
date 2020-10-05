@@ -123,7 +123,7 @@ for section in config["sections"]:
 				current_segment = 0
 			inpoint, outpoint = segments[current_segment]
 			type = "track"
-			tracks[name][1] += 1 # increase next segment to be used
+			tracks[name][1] = current_segment + 1 # increase next segment to be used
 		else:
 			print("Skipping undefined clip: {}".format(name))
 			continue
@@ -242,14 +242,13 @@ for section in config["sections"]:
 				note = notes[0]
 			except IndexError as e:
 				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
+			
 			tick = note.tick
 
 			start = tick / song.header.tempo
 			asset_start = inpoint
 			duration = outpoint - inpoint
 			start, end = ensure_section_time(start, duration, min_time, max_time)
-			tracks[name][1] += 1 # increase current section
-
 			times.append((start, asset_start, end))
 		
 		# Add clip to the video
