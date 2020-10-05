@@ -239,6 +239,202 @@
 				{ "name": "claps", "size": 1, "pos": [ 4, 3 ] },
 				{ "name": "snare", "size": 1, "pos": [ 4, 4 ] }
 			]
+		},
+		{
+			"start": 528,
+			"end": 1168,
+			"grid_size": 4,
+			"clips": [
+				{ "name": "pling", "size": 2, "pos": [ 1, 1 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 0, 0 ] },
+				{ "name": "chimes", "size": 1, "pos": [ 1, 0 ] },
+				{ "name": "crash", "size": 1, "pos": [ 1, 0 ] },
+				{ "name": "bit", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "bassdrum_low", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 0, 1 ] },
+				{ "name": "bongo1", "size": 1, "pos": [ 3, 1 ] },
+				{ "name": "bongo2", "size": 1, "pos": [ 3, 1 ] },
+				{ "name": "snare", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "snap", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "witch", "size": 1, "pos": [ 0, 3 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 1, 3 ] },
+				{ "name": "claps", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 3, 3 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 3, 3 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 3, 3 ] }
+			]
+		},
+		{
+			"start": 1168,
+			"end": 1672,
+			"grid_size": 4,
+			"clips": [
+				{ "name": "pling", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "bass", "size": 2, "pos": [ 2, 2 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "bit", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "snap", "size": 1, "pos": [ 0, 3 ] },
+				{ "name": "claps", "size": 1, "pos": [ 1, 3 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "crash", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] }
+			]
+		},
+		{
+			"start": 1672,
+			"end": 1680,
+			"grid_size": 4,
+			"clips": [
+				{ "name": "bit", "size": 2, "pos": [ 1, 1 ] },
+				{ "name": "snare", "size": 1, "pos": [ 0, 0 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 0, 3 ] },
+				{ "name": "snap", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "CAVE!", "size": 1, "pos": [ 3, 3 ] }
+				
+			]
+		},
+		{
+			"start": 1680,
+			"end": 1936,
+			"grid_size": 3,
+			"clips": [
+				{ "name": "bass", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "pling", "size": 2, "pos": [ 2, 2 ] },
+				{ "name": "witch", "size": 2, "pos": [ 0, 2 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] },
+				{ "name": "WOODCLICK!" }
+			]
+		},
+		{
+			"start": 1936,
+			"end": 2064,
+			"grid_size": 3,
+			"clips": [
+				{ "name": "bass", "size": 1, "pos": [ 0, 1 ] },
+				{ "name": "pling", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "witch", "size": 1, "pos": [ 1, 1 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 0, 0 ] },
+				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 2, 2 ] }
+			]
+		},
+		{
+			"start": 2064,
+			"end": 2560,
+			"grid_size": 3,
+			"clips": [
+				{ "name": "pling", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "flute", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "chimes", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "claps", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 1, 2 ] }
+			]
+		},
+		{
+			"start": 2560,
+			"end": 2576,
+			"grid_size": 1,
+			"clips": [
+				{ "name": "skeleton", "size": 1, "pos": [ 0, 0 ] }
+			]
+		},
+		{
+			"start": 2576,
+			"end": 2832,
+			"grid_size": 5,
+			"clips": [
+				{ "name": "main", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "bass", "size": 2, "pos": [ 3, 0 ] },
+				{ "name": "pling", "size": 2, "pos": [ 0, 3 ] },
+				{ "name": "flute", "size": 2, "pos": [ 3, 3 ] },
+				{ "name": "crash", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 4, 2 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "wither", "size": 1, "pos": [ 4, 2 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
+			]
+		},
+		{
+			"start": 2832,
+			"end": 3088,
+			"grid_size": 5,
+			"clips": [
+				{ "name": "pling", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "main", "size": 2, "pos": [ 3, 0 ] },
+				{ "name": "bass", "size": 2, "pos": [ 0, 3 ] },
+				{ "name": "flute", "size": 2, "pos": [ 3, 3 ] },
+				{ "name": "crash", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 4, 2 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "witch", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
+			]
+		},
+		{
+			"start": 3088,
+			"end": 3344,
+			"grid_size": 5,
+			"clips": [
+				{ "name": "bass", "size": 2, "pos": [ 0, 0 ] },
+				{ "name": "flute", "size": 2, "pos": [ 3, 0 ] },
+				{ "name": "main", "size": 2, "pos": [ 0, 3 ] },
+				{ "name": "pling", "size": 2, "pos": [ 3, 3 ] },
+				{ "name": "crash", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 4, 2 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
+				{ "name": "witch", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
+			]
+		},
+		{
+			"start": 3344,
+			"end": 3856,
+			"grid_size": 4,
+			"clips": [
+				{ "name": "bass", "size": 2, "pos": [ 0, 1 ] },
+				{ "name": "pling", "size": 2, "pos": [ 2, 1 ] },
+				{ "name": "bassdrum", "size": 1, "pos": [ 1, 0 ] },
+				{ "name": "claps", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "snare", "size": 1, "pos": [ 0, 3 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 1, 3 ] },
+				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 0 ] },
+				{ "name": "CAVE!", "size": 1, "pos": [ 3, 3 ] }
+			]
 		}
 	]
 }
