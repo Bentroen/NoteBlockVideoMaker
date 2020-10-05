@@ -142,16 +142,21 @@ for section in config["sections"]:
 		
 		# Get the clip's appearance times from the notes in song
 		chunk = filter(lambda x: x.tick >= section_start and x.tick < section_end, song.notes)
-		notes = sorted(filter(lambda y: y.instrument == ins, chunk), key=lambda z: z.tick)
+		dirty_notes = sorted(filter(lambda y: y.instrument == ins, chunk), key=lambda z: z.tick)
+		previous_tick = -1
+		notes = dirty_notes
+		notes = []
+		# remove repeated instruments in the same tick
+		for note in dirty_notes:
+			if note.tick > previous_tick:
+				notes.append(note)
+			previous_tick = note.tick
+				
 		times = []
 		
 		if type == "clip":
-			previous_tick = None
 			for note in notes:
 				tick = note.tick
-				if tick == previous_tick:
-					# skip repeated instruments in the same tick
-					continue
 				start = tick / song.header.tempo - (attack - inpoint)
 				# prevent clip from exceeding section time
 				
@@ -159,7 +164,6 @@ for section in config["sections"]:
 				duration = outpoint - inpoint
 				start, end = ensure_section_time(start, duration, min_time, max_time)
 				times.append((start, end))
-				previous_tick = tick
 				
 		elif type == "track":
 			note = notes[0]
