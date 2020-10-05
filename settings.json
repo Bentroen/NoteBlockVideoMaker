@@ -6,11 +6,6 @@
 			"start": 0,
 			"attack": 0.190
 		},
-		"cure": {
-			"source": "transitions/cure1.mp4",
-			"instrument": 2,
-			"start": 0
-		},
 		"snap": {
 			"source": "drums/snap.mp4",
 			"instrument": 21,
@@ -113,6 +108,13 @@
 			"source": "transitions/skeleton.mp4",
 			"start": 0,
 			"attack": 0.370
+		},
+		"cure": {
+			"source": "transitions/cure3.mp4",
+			"instrument": 2,
+			"start": 0,
+			"attack": 0.541,
+			"end": 2.700
 		}
 	},
 	"tracks": {
