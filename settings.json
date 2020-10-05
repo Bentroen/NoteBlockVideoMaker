@@ -108,6 +108,11 @@
 			"instrument": 19,
 			"start": 3.700,
 			"attack": 4.049
+		},
+		"skeleton": {
+			"source": "transitions/skeleton.mp4",
+			"start": 0,
+			"attack": 0.370
 		}
 	},
 	"tracks": {
