@@ -293,7 +293,7 @@
 				{ "name": "bit", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "bassdrum_low", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 0, 1 ] },
-				{ "name": "bongo", "size": 1, "pos": [ 3, 1 ] }
+				{ "name": "bongo", "size": 1, "pos": [ 3, 1 ] },
 				{ "name": "snare", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "snap", "size": 1, "pos": [ 3, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 0, 3 ] },
@@ -317,7 +317,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "crash", "size": 1, "pos": [ 3, 0 ] },
-				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] }
 			]
 		},
@@ -344,7 +344,7 @@
 				{ "name": "witch", "size": 2, "pos": [ 0, 2 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
-				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] },
 				{ "name": "WOODCLICK!" }
 			]
@@ -360,7 +360,7 @@
 				{ "name": "crash", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] },
-				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "cure", "size": 3, "pos": [ 0, 0 ] }
 			]
@@ -403,7 +403,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
 				{ "name": "wither", "size": 1, "pos": [ 4, 2 ] },
-				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
 			]
 		},
@@ -443,7 +443,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
-				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
 			]
 		},
