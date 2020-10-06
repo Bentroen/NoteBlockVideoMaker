@@ -131,20 +131,20 @@ for section_num, section in enumerate(config["sections"]):
 		# Figure out if a clip or a track
 		name = item["name"]
 		if name in clips:
+			type = "clip"
 			parts, asset, track_id = clips[name]
 			clip_times = {}
 			for ins, inpoint, attack, outpoint in zip(*parts):
 				clip_times[ins] = (inpoint, attack, outpoint)
 			instruments = clip_times.keys()
-			type = "clip"
 		elif name in tracks:
 			ins, current_segment, asset, track_id, segments = tracks[name]
+			type = "track"
 			instruments = [ins]
 			# loop back to the first segment when running out
 			if current_segment > len(segments) - 1:
 				current_segment = 0
 			inpoint, outpoint = segments[current_segment]
-			type = "track"
 			tracks[name][1] = current_segment + 1 # increase next segment to be used
 		else:
 			print("Skipping undefined clip: {}".format(name))
