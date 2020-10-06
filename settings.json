@@ -238,7 +238,9 @@
 			"start": 240,
 			"end": 264,
 			"grid_size": 1,
-			"clips": [ ]
+			"clips": [ 
+				{ "name": "fireworks", "size": 1, "pos": [ 0, 0 ] }
+			]
 		},
 		{
 			"start": 265,
