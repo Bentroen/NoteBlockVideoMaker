@@ -163,18 +163,6 @@ for section in config["sections"]:
 			for i, note in enumerate(notes):
 				tick = note.tick
 				
-				'''
-				# find next tick time to figure out how much "margin"
-				try:
-					next_tick = notes[i + 1].tick
-				except IndexError:
-					next_tick = 10000
-				#######attack_delay = attack - inpoint
-				'''
-				
-				
-				
-				
 				# set clip to start exactly at the attack point
 				start = tick / song.header.tempo
 				asset_start = attack
@@ -204,42 +192,6 @@ for section in config["sections"]:
 				times.append((start, asset_start, end))
 				last_attack = start + attack_time
 				
-				
-				start = tick / song.header.tempo
-				timeframe = next_tick / song.header.tempo - start
-				advance = min(0.25, timeframe)
-				if advance < 0.25:
-					asset_start = attack
-				else:
-					asset_start = attack - 0.25
-				print(attack, advance, asset_start)
-				start -= advance
-				
-				# ANOTHER APPROACH: set the minimum clip length to be [attack + min(0.25, timeframe)], subtract it from timeframe and split leftover time into head and tail equally 
-				
-				# prevent clip from exceeding section time
-				duration = outpoint - asset_start
-				start, end = enforce_section_time(start, duration, min_time, max_time)
-				
-				
-				# prevent overlapping/wait for attack of previous clip
-				delay = 0
-				print(last_attack, start)
-				#if last_attack and start < last_attack + 0.25:
-				#	delay = start - last_attack + 0.25
-				if last_attack and start < last_attack:
-					delay = last_attack - start
-					print(delay)
-					duration -= delay
-					asset_start += delay
-					start += delay
-				last_attack = start + duration #start + attack_delay
-				
-				times.append((start, asset_start, end))
-				
-				# Center clip around [attack, attack + 0.25] and fit whatever else you can
-				# in the range [start, end] around that.
-				
 		elif type == "track":
 			try:
 				note = notes[0]
@@ -247,7 +199,7 @@ for section in config["sections"]:
 				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
 			
 			tick = note.tick
-
+			
 			start = tick / song.header.tempo
 			asset_start = inpoint
 			duration = outpoint - inpoint
@@ -271,23 +223,3 @@ for section in config["sections"]:
 
 
 project.save("output.hfp")
-
-'''
-length = last_tick / song.header.tempo + 1
-audio = mpy.AudioFileClip(TRACK).set_duration(length).set_start(10)
-
-
-
-final = mpy.CompositeVideoClip(video, size=(WIDTH, HEIGHT))
-#final = final.without_audio().set_audio(final.audio)
-
-final = final.set_audio(audio.set_duration(length))
-#final.preview(fps=10)
-
-if False:
-	for x in range(int(length)):
-		print("Generating preview frame {} of {}".format(x + 1, int(length)))
-		final.save_frame("frames/{}.png".format(x), t=x)
-
-final.write_videofile(OUTPUT, fps=60, threads=4, logger='bar', preset='ultrafast')
-'''
