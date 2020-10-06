@@ -116,10 +116,10 @@
 		},
 		"cure": {
 			"source": "transitions/cure3.mp4",
-			"instrument": 2,
-			"start": 0,
+			"instrument": 26,
+			"start": 0.250,
 			"attack": 0.541,
-			"end": 2.700
+			"end": 0.750
 		}
 	},
 	"tracks": {
