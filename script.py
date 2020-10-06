@@ -109,17 +109,16 @@ for name, track in config["tracks"].items():
 video = []
 last_tick = 0
 
-for section in config["sections"]:
-
+for section_num, section in enumerate(config["sections"]):
 	
 	section_start = section["start"]
 	section_end = section["end"]
 	last_tick = section_end
 	grid_size = section["grid_size"]
 	
-	print("\n======================================")
-	print("Starting render of section at tick {}".format(section_start))
-	print("======================================\n")
+	print("\n==========================================")
+	print("Starting render of section {} at tick {}".format(section_num + 1, section_start))
+	print("==========================================\n")
 	
 	if section_start > song.header.song_length - 1:
 		break
