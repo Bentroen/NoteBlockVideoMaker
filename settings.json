@@ -56,40 +56,45 @@
 			"attack": 1.151,
 			"end": 1.800
 		},
-		"bongo1": {
+		"bongo": {
 			"source": "drums/bongo.mp4",
-			"instrument": 28,
-			"start": 2.000,
-			"attack": 2.550,
-			"end": 2.894
+			"parts": [
+				{
+					"instrument": 28,
+					"start": 2.000,
+					"attack": 2.550,
+					"end": 2.894
+				},
+				{
+					"instrument": 29,
+					"start": 5.304,
+					"attack": 5.304,
+					"end": 6.000
+				}
+			]
 		},
-		"bongo2": {
-			"source": "drums/bongo.mp4",
-			"instrument": 29,
-			"start": 5.304,
-			"attack": 5.304,
-			"end": 6.000
-		},
-		"shaker1": {
+		"shaker": {
 			"source": "drums/shaker.mp4",
-			"instrument": 32,
-			"start": 4.767,
-			"attack": 4.819,
-			"end": 5.184
-		},
-		"shaker2": {
-			"source": "drums/shaker.mp4",
-			"instrument": 31,
-			"start": 2.998,
-			"attack": 3.067,
-			"end": 3.457
-		},
-		"shaker3": {
-			"source": "drums/shaker.mp4",
-			"instrument": 33,
-			"start": 6.580,
-			"attack": 6.617,
-			"end": 7.047
+			"parts": [
+				{
+					"instrument": 31,
+					"start": 4.767,
+					"attack": 4.819,
+					"end": 5.184
+				},
+				{
+					"instrument": 32,
+					"start": 2.998,
+					"attack": 3.067,
+					"end": 3.457
+				},
+				{
+					"instrument": 33,
+					"start": 6.580,
+					"attack": 6.617,
+					"end": 7.047
+				}
+			]
 		},
 		"snare": {
 			"source": "drums/snare.mp4",
@@ -243,7 +248,8 @@
 				{ "name": "pling", "size": 3, "pos": [ 0, 0 ] },
 				{ "name": "flute", "size": 2, "pos": [ 0, 3 ] },
 				{ "name": "bass", "size": 2, "pos": [ 3, 0 ] },
-				{ "name": "plingfx", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "main", "size": 1, "pos": [ 3, 2 ] },
+				{ "name": "plingfx", "size": 1, "pos": [ 4, 2 ] },
 				{ "name": "bit", "size": 1, "pos": [ 4, 2 ] },
 				{ "name": "wither", "size": 1, "pos": [ 2, 3 ] },
 				{ "name": "witch", "size": 1, "pos": [ 2, 4 ] },
@@ -266,16 +272,13 @@
 				{ "name": "crash", "size": 1, "pos": [ 1, 0 ] },
 				{ "name": "bassdrum_low", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 0, 1 ] },
-				{ "name": "bongo1", "size": 1, "pos": [ 3, 1 ] },
-				{ "name": "bongo2", "size": 1, "pos": [ 3, 1 ] },
+				{ "name": "bongo", "size": 1, "pos": [ 3, 1 ] },
 				{ "name": "snare", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "snap", "size": 1, "pos": [ 3, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 0, 3 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 1, 3 ] },
 				{ "name": "claps", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 3, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 3, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 3, 3 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 3, 3 ] }
 			]
 		},
 		{
@@ -290,16 +293,13 @@
 				{ "name": "bit", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "bassdrum_low", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 0, 1 ] },
-				{ "name": "bongo1", "size": 1, "pos": [ 3, 1 ] },
-				{ "name": "bongo2", "size": 1, "pos": [ 3, 1 ] },
+				{ "name": "bongo", "size": 1, "pos": [ 3, 1 ] }
 				{ "name": "snare", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "snap", "size": 1, "pos": [ 3, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 0, 3 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 1, 3 ] },
 				{ "name": "claps", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 3, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 3, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 3, 3 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 3, 3 ] }
 			]
 		},
 		{
@@ -317,9 +317,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "crash", "size": 1, "pos": [ 3, 0 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 1 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 1 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] }
 				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] }
 			]
 		},
@@ -346,9 +344,7 @@
 				{ "name": "witch", "size": 2, "pos": [ 0, 2 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 0 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 1 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 1 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 1 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] }
 				{ "name": "rattle", "size": 1, "pos": [ 3, 1 ] },
 				{ "name": "WOODCLICK!" }
 			]
@@ -364,9 +360,7 @@
 				{ "name": "crash", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 0, 2 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 0, 2 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 0, 2 ] }
 				{ "name": "rattle", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "cure", "size": 3, "pos": [ 0, 0 ] }
 			]
@@ -409,9 +403,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
 				{ "name": "wither", "size": 1, "pos": [ 4, 2 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] }
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
 			]
 		},
@@ -431,9 +423,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
 			]
 		},
@@ -453,9 +443,7 @@
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 2 ] },
 				{ "name": "witch", "size": 1, "pos": [ 2, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 3, 2 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] }
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 4 ] }
 			]
 		},
@@ -466,16 +454,14 @@
 			"clips": [
 				{ "name": "bass", "size": 2, "pos": [ 0, 1 ] },
 				{ "name": "pling", "size": 2, "pos": [ 2, 1 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 0 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 0 ] },
-				{ "name": "claps", "size": 1, "pos": [ 2, 0 ] },
-				{ "name": "woodclick", "size": 1, "pos": [ 3, 0 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 0 ] },
+				{ "name": "CAVE!", "size": 1, "pos": [ 3, 0 ] },
 				{ "name": "snare", "size": 1, "pos": [ 0, 3 ] },
 				{ "name": "rattle", "size": 1, "pos": [ 1, 3 ] },
-				{ "name": "shaker1", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "shaker3", "size": 1, "pos": [ 2, 3 ] },
-				{ "name": "bit", "size": 1, "pos": [ 0, 0 ] },
-				{ "name": "CAVE!", "size": 1, "pos": [ 3, 3 ] }
+				{ "name": "shaker", "size": 1, "pos": [ 2, 3 ] },
+				{ "name": "crash", "size": 1, "pos": [ 3, 3 ] }
 			]
 		}
 	]
