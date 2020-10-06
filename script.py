@@ -113,12 +113,15 @@ last_tick = 0
 
 for section in config["sections"]:
 
-	print("Starting render of section at tick {}".format(start))
 	
 	section_start = section["start"]
 	section_end = section["end"]
 	last_tick = section_end
 	grid_size = section["grid_size"]
+	
+	print("\n======================================")
+	print("Starting render of section at tick {}".format(section_start))
+	print("======================================\n")
 	
 	if section_start > song.header.song_length - 1:
 		break
@@ -188,7 +191,6 @@ for section in config["sections"]:
 				asset_start = attack
 				duration = outpoint - attack
 				
-				print(last_attack, start)
 				time_from_last_attack = start - last_attack
 				attack_time = attack - inpoint
 
@@ -198,8 +200,6 @@ for section in config["sections"]:
 				advance = min(max(time_from_last_attack / 4, 0), attack_time, 0.25)
 				
 				choices = [max(time_from_last_attack / 4, 0), attack_time, 0.25]
-				print("time from last: {} / attack time: {} / max: {}".format(*choices))
-				print("picking: {}".format(min(choices)))
 				
 				# move clip forward by the calculated start position
 				asset_start -= advance
@@ -212,6 +212,8 @@ for section in config["sections"]:
 				times.append((start, asset_start, end))
 				last_attack = start + attack_time
 				
+			print("Rendered clip {} {} times".format(name, len(notes) + 1))
+				
 		elif type == "track":
 			try:
 				note = notes[0]
@@ -219,6 +221,8 @@ for section in config["sections"]:
 				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
 			
 			tick = note.tick
+			
+			print("Rendering segment {} of track {} at tick {}".format(current_segment + 1, name, tick))
 			
 			start = tick / song.header.tempo
 			asset_start = inpoint
@@ -238,8 +242,6 @@ for section in config["sections"]:
 			# TWO OPTIONS HERE: 1) Either make Clip completely independent of the project,
 			# and only generate a UUID on project.add_clip(), or require a new instance of
 			# Clip everytime a new clip is added.
-
-			print("Rendering {} '{}' at {:.1f} seconds".format(type, name, start))
 
 
 project.save("output.hfp")
