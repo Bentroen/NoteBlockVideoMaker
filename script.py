@@ -100,9 +100,7 @@ for name, track in config["tracks"].items():
 	for i, section in enumerate(track["segments"]):
 		print("Loading section {} of track {}".format(i+1, name))
 		start = section.get("start", 0)
-		end = section.get("end")
-		if not end:
-			end = asset.duration
+		end = section.get("end", asset.duration)
 		segments.append((start, end))
 	tracks[name] = [instrument, 0, asset, track_id, segments]
 
