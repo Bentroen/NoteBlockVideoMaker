@@ -111,6 +111,7 @@
 		},
 		"skeleton": {
 			"source": "transitions/skeleton.mp4",
+			"instrument": 27,
 			"start": 0,
 			"attack": 0.370
 		},
