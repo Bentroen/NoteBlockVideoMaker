@@ -366,8 +366,9 @@
 				{ "name": "snare", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "shaker1", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "shaker2", "size": 1, "pos": [ 0, 2 ] },
-				{ "name": "shaker2", "size": 1, "pos": [ 0, 2 ] },
-				{ "name": "rattle", "size": 1, "pos": [ 2, 2 ] }
+				{ "name": "shaker3", "size": 1, "pos": [ 0, 2 ] },
+				{ "name": "rattle", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "cure", "size": 3, "pos": [ 0, 0 ] }
 			]
 		},
 		{
