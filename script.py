@@ -64,16 +64,29 @@ clips = {}
 for name, clip in config["clips"].items():
 	print("Loading clip {}".format(name))
 	path = clip["source"]
-	instrument = clip["instrument"]
-	start = clip.get("start", 0)
-	attack = clip.get("attack", 0)
-	end = clip.get("end")
-	
 	file = os.path.join("clips", path)
 	asset, track_id = setup_clip(file, name)
-	if not end:
-		end = asset.duration
-	clips[name] = (instrument, start, attack, end, asset, track_id)
+	
+	clip_parts = clip.get("parts")
+	if clip_parts:
+		print("a")
+		parts = []
+		for part in clip_parts:
+			instrument = part["instrument"]
+			start = part.get("start", 0)
+			attack = part.get("attack", 0)
+			end = part.get("end", asset.duration)
+			all = [instrument, start, attack, end]
+			parts.append(all)
+		parts = list(zip(*parts))
+	else:
+		instrument = clip["instrument"]
+		start = clip.get("start", 0)
+		attack = clip.get("attack", 0)
+		end = clip.get("end", asset.duration)
+		parts = [[instrument], [attack], [start], [end]]
+		
+	clips[name] = (parts, asset, track_id)
 	
 
 # Prepare tracks for use in the video
@@ -118,10 +131,15 @@ for section in config["sections"]:
 		# Figure out if a clip or a track
 		name = item["name"]
 		if name in clips:
-			ins, inpoint, attack, outpoint, asset, track_id = clips[name]
+			parts, asset, track_id = clips[name]
+			clip_times = {}
+			for ins, inpoint, attack, outpoint in zip(*parts):
+				clip_times[ins] = (inpoint, attack, outpoint)
+			instruments = clip_times.keys()
 			type = "clip"
 		elif name in tracks:
 			ins, current_segment, asset, track_id, segments = tracks[name]
+			instruments = [ins]
 			# loop back to the first segment when running out
 			if current_segment > len(segments) - 1:
 				current_segment = 0
@@ -146,7 +164,7 @@ for section in config["sections"]:
 		
 		# Get the clip's appearance times from the notes in song
 		chunk = filter(lambda x: x.tick >= section_start and x.tick < section_end, song.notes)
-		dirty_notes = sorted(filter(lambda y: y.instrument == ins, chunk), key=lambda z: z.tick)
+		dirty_notes = sorted(filter(lambda y: y.instrument in instruments, chunk), key=lambda z: z.tick)
 		previous_tick = -1
 		notes = dirty_notes
 		notes = []
@@ -162,6 +180,8 @@ for section in config["sections"]:
 			last_attack = -1
 			for i, note in enumerate(notes):
 				tick = note.tick
+				ins = note.instrument
+				inpoint, attack, outpoint = clip_times[ins]
 				
 				# set clip to start exactly at the attack point
 				start = tick / song.header.tempo
