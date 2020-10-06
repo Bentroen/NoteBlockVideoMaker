@@ -136,7 +136,7 @@
 		},
 		"flute": {
 			"source": "tracks/Flute Chords.mp4",
-			"instrument": 7,
+			"instrument": 6,
 			"segments": [
 				{ "start": 13.036, "end": 25.535 },
 				{ "start": 25.535, "end": 30.000 },
