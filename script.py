@@ -84,7 +84,7 @@ for name, clip in config["clips"].items():
 		start = clip.get("start", 0)
 		attack = clip.get("attack", 0)
 		end = clip.get("end", asset.duration)
-		parts = [[instrument], [attack], [start], [end]]
+		parts = [[instrument], [start], [attack], [end]]
 		
 	clips[name] = (parts, asset, track_id)
 	
