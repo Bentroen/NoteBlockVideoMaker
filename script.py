@@ -143,6 +143,7 @@ for section_num, section in enumerate(config["sections"]):
 			type = "track"
 			ins, current_segment, asset, track_id, segments = tracks[name]
 			instruments = [ins]
+			triggers = item.get("triggers", 1)
 		else:
 			print("Skipping undefined clip: {}".format(name))
 			continue
@@ -227,17 +228,14 @@ for section_num, section in enumerate(config["sections"]):
 					
 					# increase next segment to be used, and loop
 					# back to first segment when running out
-					current_segment += 1					
 					current_segment += 1
 					if current_segment > len(segments) - 1:
 						current_segment = 0
 					tracks[name][1] = current_segment
 					
 					# stop if number of triggers for this segment is reached
-					if current_segment == triggers - 1:
 					if current_trigger == triggers - 1:
 						break
-					
 					current_trigger += 1
 					
 				previous_tick = tick
