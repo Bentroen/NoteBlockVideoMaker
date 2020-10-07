@@ -72,7 +72,6 @@ for name, clip in config["clips"].items():
 	
 	clip_parts = clip.get("parts")
 	if clip_parts:
-		print("a")
 		parts = []
 		for part in clip_parts:
 			instrument = part["instrument"]
@@ -131,7 +130,7 @@ for section_num, section in enumerate(config["sections"]):
 	
 	for item in section["clips"]:
 		
-		# Figure out if a clip or a track
+		# Figure out if a clip or a track, set up asset and track objects
 		name = item["name"]
 		if name in clips:
 			type = "clip"
@@ -202,7 +201,12 @@ for section_num, section in enumerate(config["sections"]):
 				# of the clip, or 1/4 of a second (whatever is smaller).
 				advance = min(max(time_from_last_attack / 4, 0), attack_time, 0.25)
 				
+				'''
+				print(attack, inpoint)
 				choices = [max(time_from_last_attack / 4, 0), attack_time, 0.25]
+				print("time from last: {} / attack time: {} / max: {}".format(*choices))
+				print("picking: {}".format(min(choices)))
+				'''
 				
 				# move clip forward by the calculated start position
 				asset_start -= advance
