@@ -15,6 +15,8 @@ HEIGHT = 1080
 
 DELAY = 0.2
 
+TRIGGER_INTERVAL = 50
+
 
 def seconds_to_frames(s, fps=60):
 	return int(round(s * 60))
