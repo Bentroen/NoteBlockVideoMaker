@@ -68,6 +68,7 @@ for name, clip in config["clips"].items():
 	path = clip["source"]
 	file = os.path.join("clips", path)
 	asset, track_id = setup_clip(file, name)
+	ignore_consecutive = clip.get("ignore_consecutive", False)
 	
 	clip_parts = clip.get("parts")
 	if clip_parts:
@@ -88,7 +89,7 @@ for name, clip in config["clips"].items():
 		end = clip.get("end", asset.duration)
 		parts = [[instrument], [start], [attack], [end]]
 		
-	clips[name] = (parts, asset, track_id)
+	clips[name] = (parts, ignore_consecutive, asset, track_id)
 	
 
 # Prepare tracks for use in the video
@@ -134,7 +135,7 @@ for section_num, section in enumerate(config["sections"]):
 		name = item["name"]
 		if name in clips:
 			type = "clip"
-			parts, asset, track_id = clips[name]
+			parts, ignore_consecutive, asset, track_id = clips[name]
 			clip_times = {}
 			for ins, inpoint, attack, outpoint in zip(*parts):
 				clip_times[ins] = (inpoint, attack, outpoint)
@@ -175,9 +176,16 @@ for section_num, section in enumerate(config["sections"]):
 		times = []
 		
 		if type == "clip":
+			previous_tick = -1
 			last_attack = -1
 			for i, note in enumerate(notes):
 				tick = note.tick
+				
+				if ignore_consecutive and tick - 1 == previous_tick:
+					previous_tick = tick
+					#print("Ignored tick {} on clip {}".format(tick, name))
+					continue
+				
 				ins = note.instrument
 				inpoint, attack, outpoint = clip_times[ins]
 				
@@ -206,6 +214,8 @@ for section_num, section in enumerate(config["sections"]):
 				
 				times.append((start, asset_start, end))
 				last_attack = start + attack_time
+				
+				previous_tick = tick
 				
 			print("Rendered clip {} {} times".format(name, len(notes) + 1))
 				

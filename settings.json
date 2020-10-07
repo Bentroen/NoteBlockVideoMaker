@@ -3,6 +3,7 @@
 		"woodclick": {
 			"source": "drums/woodclick.mp4",
 			"instrument": 20,
+			"ignore_consecutive": true,
 			"start": 0,
 			"attack": 0.190
 		},
@@ -22,6 +23,7 @@
 		"claps": {
 			"source": "drums/claps.mp4",
 			"instrument": 17,
+			"ignore_consecutive": true,
 			"start": 0.000,
 			"attack": 0.633
 		},
@@ -46,12 +48,14 @@
 		"bassdrum": {
 			"source": "drums/bassdrum.mp4",
 			"instrument": 2,
+			"ignore_consecutive": true,
 			"start": 1.500,
 			"attack": 1.805
 		},
 		"bassdrum_low": {
 			"source": "drums/bassdrum_low.mp4",
 			"instrument": 30,
+			"ignore_consecutive": true,
 			"start": 0.800,
 			"attack": 1.151,
 			"end": 1.800
@@ -99,6 +103,7 @@
 		"snare": {
 			"source": "drums/snare.mp4",
 			"instrument": 3,
+			"ignore_consecutive": true,
 			"start": 1.000,
 			"attack": 1.184,
 			"end": 1.600
