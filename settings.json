@@ -457,7 +457,7 @@
 			"clips": [
 				{ "name": "bass", "size": 2, "pos": [ 0, 1 ] },
 				{ "name": "pling", "size": 2, "pos": [ 2, 1 ] },
-				{ "name": "bit", "size": 1, "pos": [ 0, 0 ] },
+				{ "name": "bit", "size": 1, "pos": [ 0, 0 ], "triggers": 2 },
 				{ "name": "bassdrum", "size": 1, "pos": [ 1, 0 ] },
 				{ "name": "woodclick", "size": 1, "pos": [ 2, 0 ] },
 				{ "name": "CAVE!", "size": 1, "pos": [ 3, 0 ] },
