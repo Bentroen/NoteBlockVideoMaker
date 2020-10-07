@@ -64,15 +64,14 @@
 			"parts": [
 				{
 					"instrument": 28,
-					"start": 2.000,
-					"attack": 2.550,
-					"end": 2.894
+					"start": 2.360,
+					"attack": 2.434,
+					"end": 2.879
 				},
 				{
 					"instrument": 29,
-					"start": 5.304,
-					"attack": 5.304,
-					"end": 6.000
+					"start": 4.100,
+					"attack": 4.283
 				}
 			]
 		},
