@@ -154,7 +154,7 @@
 			"source": "tracks/Chimes.mp4",
 			"instrument": 8,
 			"segments": [
-				{ "start": 0.358 }
+				{ "start": 0.358, "end": 5.770 }
 			]
 		},
 		"bit": {
