@@ -138,14 +138,9 @@ for section_num, section in enumerate(config["sections"]):
 				clip_times[ins] = (inpoint, attack, outpoint)
 			instruments = clip_times.keys()
 		elif name in tracks:
-			ins, current_segment, asset, track_id, segments = tracks[name]
 			type = "track"
+			ins, current_segment, asset, track_id, segments = tracks[name]
 			instruments = [ins]
-			# loop back to the first segment when running out
-			if current_segment > len(segments) - 1:
-				current_segment = 0
-			inpoint, outpoint = segments[current_segment]
-			tracks[name][1] = current_segment + 1 # increase next segment to be used
 		else:
 			print("Skipping undefined clip: {}".format(name))
 			continue
@@ -212,20 +207,50 @@ for section_num, section in enumerate(config["sections"]):
 			print("Rendered clip {} {} times".format(name, len(notes) + 1))
 				
 		elif type == "track":
+		
+			first = True
+			previous_tick = notes[0].tick - 1
+			gap_sum = 0
+			avg_gap = 0
+			for note_count, note in enumerate(notes):
+				tick = note.tick
+				print(tick - previous_tick, "REST_SUM:", gap_sum, "avg_rest:", avg_gap)
+				if first or (tick - previous_tick) > avg_gap * 10:
+				
+					first = False
+					
+					inpoint, outpoint = segments[current_segment]
+				
+					start = tick / song.header.tempo
+					print("Rendering segment {} of track {} at tick {}".format(current_segment + 1, name, tick))
+					asset_start = inpoint
+					duration = outpoint - inpoint
+					start, asset_start, end = enforce_section_time(start, asset_start, duration, min_time, max_time)
+					times.append((start, asset_start, end))
+					
+					# increase next segment to be used, and loop
+					# back to first segment when running out
+					current_segment += 1					
+					if current_segment > len(segments) - 1:
+						current_segment = 0
+					tracks[name][1] = current_segment
+					
+					# stop if number of triggers for this segment is reached
+					if current_segment == triggers - 1:
+						print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+						break
+					
+				gap_sum += tick - previous_tick - 1
+				avg_gap = gap_sum / (note_count + 1)
+					
+				previous_tick = tick
+		
 			try:
 				note = notes[0]
 			except IndexError as e:
 				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
 			
 			tick = note.tick
-			
-			print("Rendering segment {} of track {} at tick {}".format(current_segment + 1, name, tick))
-			
-			start = tick / song.header.tempo
-			asset_start = inpoint
-			duration = outpoint - inpoint
-			start, asset_start, end = enforce_section_time(start, asset_start, duration, min_time, max_time)
-			times.append((start, asset_start, end))
 		
 		# Add clip to the video
 		for start, asset_start, end in times:
