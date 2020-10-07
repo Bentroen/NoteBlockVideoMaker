@@ -208,16 +208,11 @@ for section_num, section in enumerate(config["sections"]):
 				
 		elif type == "track":
 		
-			first = True
+			current_trigger = 0
 			previous_tick = notes[0].tick - 1
-			gap_sum = 0
-			avg_gap = 0
-			for note_count, note in enumerate(notes):
+			for note in notes:
 				tick = note.tick
-				print(tick - previous_tick, "REST_SUM:", gap_sum, "avg_rest:", avg_gap)
-				if first or (tick - previous_tick) > avg_gap * 10:
-				
-					first = False
+				if current_trigger == 0 or (tick - previous_tick) >= TRIGGER_INTERVAL:
 					
 					inpoint, outpoint = segments[current_segment]
 				
@@ -231,17 +226,17 @@ for section_num, section in enumerate(config["sections"]):
 					# increase next segment to be used, and loop
 					# back to first segment when running out
 					current_segment += 1					
+					current_segment += 1
 					if current_segment > len(segments) - 1:
 						current_segment = 0
 					tracks[name][1] = current_segment
 					
 					# stop if number of triggers for this segment is reached
 					if current_segment == triggers - 1:
-						print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+					if current_trigger == triggers - 1:
 						break
 					
-				gap_sum += tick - previous_tick - 1
-				avg_gap = gap_sum / (note_count + 1)
+					current_trigger += 1
 					
 				previous_tick = tick
 		
