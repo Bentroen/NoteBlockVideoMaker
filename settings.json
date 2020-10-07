@@ -235,7 +235,7 @@
 				{ "name": "shaker", "size": 1, "pos": [ 2, 1 ] },
 				{ "name": "bassdrum", "size": 1, "pos": [ 0, 2 ] },
 				{ "name": "snare", "size": 1, "pos": [ 1, 2 ] },
-				{ "name": "woodclick", "size": 1, "pos": [ 2, 2 ] },
+				{ "name": "woodclick", "size": 1, "pos": [ 2, 2 ] }
 			]
 		},
 		{
