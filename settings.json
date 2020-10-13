@@ -1,4 +1,9 @@
 {
+	"input": "input.nbs",
+	"output": "output.hfp",
+	"width": 1920,
+	"height": 1080,
+	"trigger_interval": 50,
 	"clips": {
 		"woodclick": {
 			"source": "drums/woodclick.mp4",

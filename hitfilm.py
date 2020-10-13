@@ -29,7 +29,7 @@ class Clip():
 		self.anchorx = -mw / 2
 		self.anchory = mh / 2
 		self.posx = x - (1920 // 2) # HARDCODED: get from project
-		self.posy = (1080 // 2) - y #+ (1080 // 2)
+		self.posy = (1080 // 2) - y
 		
 	def set_size(self, width, height):
 		self.width = width
@@ -257,7 +257,6 @@ class Project():
 	
 	def load_tree(self):
 		with open("base.hfp") as f:
-			#return ET.parse(f)
 			return f.read()
 	
 	def add_media(self, filename, name):
@@ -275,13 +274,13 @@ class Project():
 			pass #TODO
 		return track.id
 	
-	def add_clip(self, clip): #, track, asset_id):
+	def add_clip(self, clip)
 		self.video_tracks[clip.track_id].add_object(clip)
 		self.media[clip.asset.id].add_instance(clip.id, type=0)
 		
-		#clip = self.clips[asset_id]
-		#clip.add_instance(instance_id, type)
-		#self.video_tracks[track_id].add_object(clip)
+		# TWO OPTIONS HERE: 1) Either make Clip completely independent of the project,
+		# and only generate a UUID on project.add_clip(), or require a new instance of
+		# Clip everytime a new clip is added.
 	
 	def save(self, filename):
 		with open("base.hfp") as f:

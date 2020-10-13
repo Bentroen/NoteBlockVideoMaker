@@ -1,33 +1,22 @@
-#import moviepy.editor as mpy
 import hitfilm
 import json
 import os
 import pynbs
-import xml.etree.ElementTree as ET
-import uuid
-
-
-INPUT = "input.nbs"
-OUTPUT = "output.mp4"
-TRACK = "track.mp3"
-WIDTH = 1920
-HEIGHT = 1080
-
-DELAY = 0.2
-
-TRIGGER_INTERVAL = 50
 
 
 def seconds_to_frames(s, fps=60):
 	return int(round(s * 60))
 
+
 def frames_to_seconds(s, fps=60):
 	return s / 60
+
 
 def setup_clip(filename, name):
 	asset = project.add_media(file, name)
 	track_id = project.add_track(name=name, type='video')
 	return asset, track_id
+
 
 def enforce_section_time(start, asset_start, duration, min_time, max_time):
 	if start < min_time:
@@ -42,24 +31,32 @@ def enforce_section_time(start, asset_start, duration, min_time, max_time):
 		
 	return start, asset_start, end
 
-with open("settings.json") as f:
-	config = json.load(f)
-	
-song = pynbs.read(INPUT)
-length = song.header.song_length / song.header.tempo + 1
 
-
-'''
+# Test project, asset and clip setup
+"""
 project = hitfilm.Project()
 asset_id = project.add_media("clips/drums/crash.mp4", "Crash")
 track = project.add_track("Wood Click")
-clip = hitfilm.Clip(track_id, asset_id, start=240, end=280, asset_start=0, posx=0, posy=0, scalex=0, scaley=0, speed=1)
+clip = hitfilm.Clip(track_id, asset_id, start=240, duration=40, asset_start=0, posx=0, posy=0, scalex=0, scaley=0, speed=1)
 project.add_clip(clip, track_id, asset_id)
-
 project.save("test.hfp")
-'''
+"""
 
+# Get video settings from config file
+with open("settings.json") as f:
+	config = json.load(f)
+input_path = config["input"]
+output_path = config["output"]
+width = config.get("width", 1920)
+height = config.get("height", 1080)
+trigger_interval = config.get("trigger_interval", 50)
+
+
+# Read song and set up HitFilm project
+song = pynbs.read(input_path)
+length = song.header.song_length / song.header.tempo + 1
 project = hitfilm.Project()
+
 
 # Prepare clips for use in the video
 clips = {}
@@ -125,8 +122,8 @@ for section_num, section in enumerate(config["sections"]):
 	if section_start > song.header.song_length - 1:
 		break
 	
-	cellw = WIDTH / grid_size
-	cellh = HEIGHT / grid_size
+	cellw = width / grid_size
+	cellh = height / grid_size
 	
 	for item in section["clips"]:
 		
@@ -198,15 +195,8 @@ for section_num, section in enumerate(config["sections"]):
 
 				# Use 1/4 of the last clip's "release" for the start of
 				# the current clip, the time from the start to the attack
-				# of the clip, or 1/4 of a second (whatever is smaller).
+				# of the clip, or 0.25 seconds (whatever is smaller).
 				advance = min(max(time_from_last_attack / 4, 0), attack_time, 0.25)
-				
-				'''
-				print(attack, inpoint)
-				choices = [max(time_from_last_attack / 4, 0), attack_time, 0.25]
-				print("time from last: {} / attack time: {} / max: {}".format(*choices))
-				print("picking: {}".format(min(choices)))
-				'''
 				
 				# move clip forward by the calculated start position
 				asset_start -= advance
@@ -226,10 +216,14 @@ for section_num, section in enumerate(config["sections"]):
 		elif type == "track":
 		
 			current_trigger = 0
-			previous_tick = notes[0].tick - 1
+			try:
+				previous_tick = notes[0].tick - 1
+			except IndexError:
+				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
+			
 			for note in notes:
 				tick = note.tick
-				if current_trigger == 0 or (tick - previous_tick) >= TRIGGER_INTERVAL:
+				if current_trigger == 0 or (tick - previous_tick) >= trigger_interval:
 					
 					inpoint, outpoint = segments[current_segment]
 				
@@ -256,7 +250,7 @@ for section_num, section in enumerate(config["sections"]):
 		
 			try:
 				note = notes[0]
-			except IndexError as e:
+			except IndexError:
 				raise ValueError("Couldn't add track '{}' on section at tick {}: No note blocks with instrument {} were found".format(name, section_start, ins)) from None
 			
 			tick = note.tick
@@ -269,10 +263,6 @@ for section_num, section in enumerate(config["sections"]):
 			clip.subclip(asset_start)
 			
 			project.add_clip(clip)
-			
-			# TWO OPTIONS HERE: 1) Either make Clip completely independent of the project,
-			# and only generate a UUID on project.add_clip(), or require a new instance of
-			# Clip everytime a new clip is added.
 
 
-project.save("output.hfp")
+project.save(output_path)
